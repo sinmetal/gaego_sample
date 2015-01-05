@@ -1,13 +1,17 @@
 package gaego_sample
 
 import (
+	"fmt"
 	"net/http"
+	"github.com/zenazn/goji"
+	"github.com/zenazn/goji/web"
 )
 
 func init() {
-	http.HandleFunc("/", handler)
+	goji.Get("/hello/:name", hello)
+	goji.Serve()
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	// some code
+func hello(c web.C, w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, %s!", c.URLParams["name"])
 }
