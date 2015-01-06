@@ -8,8 +8,12 @@ import (
 )
 
 func init() {
-	goji.Get("/hello/:name", hello)
+	route(goji.DefaultMux)
 	goji.Serve()
+}
+
+func route(m *web.Mux) {
+	m.Get("/hello/:name", hello)
 }
 
 func hello(c web.C, w http.ResponseWriter, r *http.Request) {
