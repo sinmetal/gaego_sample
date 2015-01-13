@@ -8,7 +8,7 @@ import (
 	"github.com/zenazn/goji/web"
 )
 
-func TestHoge(t *testing.T) {
+func TestHello(t *testing.T) {
 	m := web.New()
 	route(m)
 	ts := httptest.NewServer(m)
